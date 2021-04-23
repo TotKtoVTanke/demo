@@ -1,0 +1,269 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:tns="http://www.yarcloud.ru/er76/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+                  name="NewXds" targetNamespace="http://www.yarcloud.ru/er76/">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.yarcloud.ru/er76/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.yarcloud.ru/er76/">
+            <xs:element name="GetActualTypeSemdRequest">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCovid19InfomationRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Snils" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetDocumentRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="uniqueId" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetIdentificatorsByMoRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="anchor" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetPersonalBySnilsRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="snils" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetPersonalDocumentsRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="LastName" type="xs:string"/>
+                        <xs:element name="FirstName" type="xs:string"/>
+                        <xs:element name="MiddleName" type="xs:string"/>
+                        <xs:element name="BitrhDate" type="xs:string"/>
+                        <xs:element name="TypeDocument" type="xs:string"/>
+                        <xs:element name="NumberDocument" type="xs:string"/>
+                        <xs:element name="TypeSemd" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="GetCovid19InfomationResponse">
+                <xs:sequence>
+                    <xs:element name="ListStatusSnils" type="tns:listStatusSnils"/>
+                    <xs:element name="Error" type="tns:error"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="listStatusSnils">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="StatusSnils" type="tns:statusSnils"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="statusSnils">
+                <xs:sequence>
+                    <xs:element name="Snils" type="xs:string"/>
+                    <xs:element name="Status" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="error">
+                <xs:sequence>
+                    <xs:element name="errorCode" type="xs:string"/>
+                    <xs:element name="errorMessage" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GetPersonalDocumentsResponse">
+                <xs:sequence>
+                    <xs:element name="ListDocuments" type="tns:listDocuments"/>
+                    <xs:element name="Error" type="tns:error"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="listDocuments">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="Document" type="tns:document"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="document">
+                <xs:sequence>
+                    <xs:element name="UniqueId" type="xs:string"/>
+                    <xs:element name="TypeSemd" type="xs:string"/>
+                    <xs:element name="NameSemd" type="xs:string"/>
+                    <xs:element name="Inserted" type="xs:dateTime"/>
+                    <xs:element name="Created" type="xs:dateTime"/>
+                    <xs:element name="AuthorMis" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GetActualTypeSemdResponse">
+                <xs:sequence>
+                    <xs:element name="ListTypeSemd" type="tns:listTypeSemd"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="listTypeSemd">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="Semd" type="tns:semd"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="semd">
+                <xs:sequence>
+                    <xs:element name="Code" type="xs:string"/>
+                    <xs:element name="Name" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GetIdentificatorsByMoResponse">
+                <xs:sequence>
+                    <xs:element name="anchor" type="xs:string"/>
+                    <xs:element name="ListDocuments" type="tns:listDocuments"/>
+                    <xs:element name="Error" type="tns:error"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GetDocumentResponse">
+                <xs:sequence>
+                    <xs:element name="content" type="xs:string"/>
+                    <xs:element name="Error" type="tns:error"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GetPersonalBySnilsResponse">
+                <xs:sequence>
+                    <xs:element name="Lastname" type="xs:string"/>
+                    <xs:element name="Firstname" type="xs:string"/>
+                    <xs:element name="Middlename" type="xs:string"/>
+                    <xs:element name="Birthdate" type="xs:string"/>
+                    <xs:element name="Sex" type="xs:string"/>
+                    <xs:element name="Error" type="tns:error"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="GetCovid19InfomationResponse" nillable="true" type="tns:GetCovid19InfomationResponse"/>
+            <xs:element name="GetPersonalDocumentsResponse" nillable="true" type="tns:GetPersonalDocumentsResponse"/>
+            <xs:element name="GetActualTypeSemdResponse" nillable="true" type="tns:GetActualTypeSemdResponse"/>
+            <xs:element name="GetIdentificatorsByMoResponse" nillable="true" type="tns:GetIdentificatorsByMoResponse"/>
+            <xs:element name="GetDocumentResponse" nillable="true" type="tns:GetDocumentResponse"/>
+            <xs:element name="GetPersonalBySnilsResponse" nillable="true" type="tns:GetPersonalBySnilsResponse"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="GetPersonalBySnilsResponse">
+        <wsdl:part element="tns:GetPersonalBySnilsResponse" name="GetPersonalBySnilsResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetPersonalBySnils">
+        <wsdl:part element="tns:GetPersonalBySnilsRequest" name="parameter"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetIdentificatorsByMo">
+        <wsdl:part element="tns:GetIdentificatorsByMoRequest" name="parameter"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetActualTypeSemd">
+        <wsdl:part element="tns:GetActualTypeSemdRequest" name="parameter"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetPersonalDocumentsResponse">
+        <wsdl:part element="tns:GetPersonalDocumentsResponse" name="GetPersonalDocumentsResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetPersonalDocuments">
+        <wsdl:part element="tns:GetPersonalDocumentsRequest" name="parameter"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetDocumentResponse">
+        <wsdl:part element="tns:GetDocumentResponse" name="GetDocumentResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetDocument">
+        <wsdl:part element="tns:GetDocumentRequest" name="parameter"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetCovid19Infomation">
+        <wsdl:part element="tns:GetCovid19InfomationRequest" name="parameter"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetCovid19InfomationResponse">
+        <wsdl:part element="tns:GetCovid19InfomationResponse" name="GetCovid19InfomationResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetActualTypeSemdResponse">
+        <wsdl:part element="tns:GetActualTypeSemdResponse" name="GetActualTypeSemdResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetIdentificatorsByMoResponse">
+        <wsdl:part element="tns:GetIdentificatorsByMoResponse" name="GetIdentificatorsByMoResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="NewXds">
+        <wsdl:operation name="GetCovid19Infomation">
+            <wsdl:input message="tns:GetCovid19Infomation" name="GetCovid19Infomation"> </wsdl:input>
+            <wsdl:output message="tns:GetCovid19InfomationResponse" name="GetCovid19InfomationResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetPersonalDocuments">
+            <wsdl:input message="tns:GetPersonalDocuments" name="GetPersonalDocuments"> </wsdl:input>
+            <wsdl:output message="tns:GetPersonalDocumentsResponse" name="GetPersonalDocumentsResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetActualTypeSemd">
+            <wsdl:input message="tns:GetActualTypeSemd" name="GetActualTypeSemd"> </wsdl:input>
+            <wsdl:output message="tns:GetActualTypeSemdResponse" name="GetActualTypeSemdResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetIdentificatorsByMo">
+            <wsdl:input message="tns:GetIdentificatorsByMo" name="GetIdentificatorsByMo"> </wsdl:input>
+            <wsdl:output message="tns:GetIdentificatorsByMoResponse" name="GetIdentificatorsByMoResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetDocument">
+            <wsdl:input message="tns:GetDocument" name="GetDocument"> </wsdl:input>
+            <wsdl:output message="tns:GetDocumentResponse" name="GetDocumentResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetPersonalBySnils">
+            <wsdl:input message="tns:GetPersonalBySnils" name="GetPersonalBySnils"> </wsdl:input>
+            <wsdl:output message="tns:GetPersonalBySnilsResponse" name="GetPersonalBySnilsResponse"> </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="NewXdsSoapBinding" type="tns:NewXds">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetCovid19Infomation">
+            <soap:operation soapAction="GetCovid19Infomation" style="document"/>
+            <wsdl:input name="GetCovid19Infomation">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetCovid19InfomationResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetPersonalDocuments">
+            <soap:operation soapAction="GetPersonalDocuments" style="document"/>
+            <wsdl:input name="GetPersonalDocuments">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPersonalDocumentsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetActualTypeSemd">
+            <soap:operation soapAction="GetActualTypeSemd" style="document"/>
+            <wsdl:input name="GetActualTypeSemd">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetActualTypeSemdResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetDocument">
+            <soap:operation soapAction="GetDocument" style="document"/>
+            <wsdl:input name="GetDocument">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDocumentResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetIdentificatorsByMo">
+            <soap:operation soapAction="GetIdentificatorsByMo" style="document"/>
+            <wsdl:input name="GetIdentificatorsByMo">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetIdentificatorsByMoResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetPersonalBySnils">
+            <soap:operation soapAction="GetPersonalBySnils" style="document"/>
+            <wsdl:input name="GetPersonalBySnils">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPersonalBySnilsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="NewXds">
+        <wsdl:port binding="tns:NewXdsSoapBinding" name="DocumentExternalWebService">
+            <soap:address location="http://test-med.yarcloud.ru/newxds-external/ws/service"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
