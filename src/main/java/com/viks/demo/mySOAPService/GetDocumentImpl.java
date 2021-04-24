@@ -60,7 +60,7 @@ public class GetDocumentImpl implements GetDocument {
             out = new BufferedWriter(new FileWriter("out.xml"));
             out.write(sOut);
         } catch (IOException e) {
-            throw new RuntimeException(e); //этот песец надо убирать!
+            e.printStackTrace();
         } finally {
             if (out != null) {
                 try { out.close(); } catch (IOException e) {

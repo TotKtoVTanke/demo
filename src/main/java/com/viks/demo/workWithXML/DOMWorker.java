@@ -37,20 +37,20 @@ public class DOMWorker {
 
         Document document = builder.parse(fileWithXMLDocument);
 
-        NodeList documentCode = document.getDocumentElement().getElementsByTagName(paramMas[0]);
+        NodeList documentCode = document.getDocumentElement().getElementsByTagName(searchTag);
 
-        if (paramMas.length>1) return getTagValue(documentCode.item(0),paramMas[1],1);
+        if (queue.size()>0) return getTagValue(documentCode.item(0),queue);
 
-        else return documentCode.item(0).getAttributes().getNamedItem(paramMas[0]).getTextContent();
+        else return documentCode.item(0).getAttributes().getNamedItem(searchTag).getTextContent();
     }
 
-    private String getTagValue(Node node, String param, int level){
-        if(level == paramMas.length-1) return node.getChildNodes().item(0).getTextContent();
+    private String getTagValue(Node node, Deque<String> queue){
+        if(queue.size() == 1) return node.getChildNodes().item(0).getTextContent();
         else {
-        NodeList nodeList = node.getChildNodes();
-        for (int i = 0; i < nodeList.getLength(); i++) {
-            if (nodeList.item(i).getNodeName().equals(param)) return getTagValue(nodeList.item(i), paramMas[++level], level);
-        }
+                NodeList nodeList = node.getChildNodes();
+                for (int i = 0; i < nodeList.getLength(); i++) {
+                    if (nodeList.item(i).getNodeName().equals(queue.pollFirst())) return getTagValue(nodeList.item(i), queue);
+             }
         return "";
         }
     }
