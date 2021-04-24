@@ -56,10 +56,18 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http-jetty</artifactId>
+            <version>2.7.6</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.codehaus.woodstox/woodstox-core-asl -->
+        <dependency>
             <groupId>org.codehaus.woodstox</groupId>
             <artifactId>woodstox-core-asl</artifactId>
-            <version>4.2.0</version>
+            <version>4.4.1</version>
         </dependency>
+
 
     </dependencies>
 
@@ -84,11 +92,10 @@
                 </executions>
                 <configuration>
                     <wsdlUrls>
-                        <!--<wsdlUrl>${basedir}/src/main/resources/myService.wsdl</wsdlUrl> -->
                         <wsdlURL>https://test-med.yarcloud.ru/newxds-external/ws/service?wsdl</wsdlURL>
                     </wsdlUrls>
                     <keep>true</keep>
-                    <packageName>om.viks.demo.generatedSrcFromWSDL</packageName>
+                    <packageName>com.viks.demo.generatedSrcFromWSDL</packageName>
                     <sourceDestDir>src/main/java</sourceDestDir>
                 </configuration>
             </plugin>
