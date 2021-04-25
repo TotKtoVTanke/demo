@@ -1,18 +1,18 @@
 package com.viks.demo.workWithXML;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
+@Component
 public class DOMWorker {
-
-    private File fileWithXMLDocument;
 
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
@@ -20,12 +20,12 @@ public class DOMWorker {
 
     String[] paramMas;
 
-
-    public DOMWorker(File fileWithXMLDocument) throws ParserConfigurationException {
-        this.fileWithXMLDocument = fileWithXMLDocument;
+    public DOMWorker() throws ParserConfigurationException {
     }
 
-    public String lookingForDocumentAtributes(String param) throws IOException, SAXException {
+    public String lookingForDocumentAtributes(String param, byte[] bytes) throws IOException, SAXException {
+
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
 
         paramMas = param.split("\\.");
 
@@ -35,7 +35,7 @@ public class DOMWorker {
 
         String searchTag = queue.pollFirst();
 
-        Document document = builder.parse(fileWithXMLDocument);
+        Document document = builder.parse(byteArrayInputStream);
 
         NodeList documentCode = document.getDocumentElement().getElementsByTagName(searchTag);
 

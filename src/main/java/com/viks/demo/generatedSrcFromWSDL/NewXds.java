@@ -27,7 +27,7 @@ public interface NewXds {
      * 
      * @param parameter
      * @return
-     *     returns om.viks.demo.generatedSrcFromWSDL.GetCovid19InfomationResponse
+     *     returns com.viks.demo.generatedSrcFromWSDL.GetCovid19InfomationResponse
      */
     @WebMethod(operationName = "GetCovid19Infomation", action = "GetCovid19Infomation")
     @WebResult(name = "GetCovid19InfomationResponse", targetNamespace = "http://www.yarcloud.ru/er76/", partName = "GetCovid19InfomationResponse")
@@ -39,7 +39,7 @@ public interface NewXds {
      * 
      * @param parameter
      * @return
-     *     returns om.viks.demo.generatedSrcFromWSDL.GetPersonalDocumentsResponse
+     *     returns com.viks.demo.generatedSrcFromWSDL.GetPersonalDocumentsResponse
      */
     @WebMethod(operationName = "GetPersonalDocuments", action = "GetPersonalDocuments")
     @WebResult(name = "GetPersonalDocumentsResponse", targetNamespace = "http://www.yarcloud.ru/er76/", partName = "GetPersonalDocumentsResponse")
@@ -51,7 +51,7 @@ public interface NewXds {
      * 
      * @param parameter
      * @return
-     *     returns om.viks.demo.generatedSrcFromWSDL.GetActualTypeSemdResponse
+     *     returns com.viks.demo.generatedSrcFromWSDL.GetActualTypeSemdResponse
      */
     @WebMethod(operationName = "GetActualTypeSemd", action = "GetActualTypeSemd")
     @WebResult(name = "GetActualTypeSemdResponse", targetNamespace = "http://www.yarcloud.ru/er76/", partName = "GetActualTypeSemdResponse")
@@ -63,7 +63,7 @@ public interface NewXds {
      * 
      * @param parameter
      * @return
-     *     returns om.viks.demo.generatedSrcFromWSDL.GetDocumentResponse
+     *     returns com.viks.demo.generatedSrcFromWSDL.GetDocumentResponse
      */
     @WebMethod(operationName = "GetDocument", action = "GetDocument")
     @WebResult(name = "GetDocumentResponse", targetNamespace = "http://www.yarcloud.ru/er76/", partName = "GetDocumentResponse")
@@ -75,7 +75,7 @@ public interface NewXds {
      * 
      * @param parameter
      * @return
-     *     returns om.viks.demo.generatedSrcFromWSDL.GetIdentificatorsByMoResponse
+     *     returns com.viks.demo.generatedSrcFromWSDL.GetIdentificatorsByMoResponse
      */
     @WebMethod(operationName = "GetIdentificatorsByMo", action = "GetIdentificatorsByMo")
     @WebResult(name = "GetIdentificatorsByMoResponse", targetNamespace = "http://www.yarcloud.ru/er76/", partName = "GetIdentificatorsByMoResponse")
@@ -87,7 +87,7 @@ public interface NewXds {
      * 
      * @param parameter
      * @return
-     *     returns om.viks.demo.generatedSrcFromWSDL.GetPersonalBySnilsResponse
+     *     returns com.viks.demo.generatedSrcFromWSDL.GetPersonalBySnilsResponse
      */
     @WebMethod(operationName = "GetPersonalBySnils", action = "GetPersonalBySnils")
     @WebResult(name = "GetPersonalBySnilsResponse", targetNamespace = "http://www.yarcloud.ru/er76/", partName = "GetPersonalBySnilsResponse")

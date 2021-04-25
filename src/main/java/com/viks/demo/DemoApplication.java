@@ -2,8 +2,11 @@ package com.viks.demo;
 
 import com.viks.demo.mySOAPService.GetDocumentImpl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.Environment;
 
 import javax.xml.ws.Endpoint;
 
@@ -13,9 +16,11 @@ public class DemoApplication {
 
     public static void main(String[] args){
 
-        SpringApplication.run(DemoApplication.class, args);
+        ConfigurableApplicationContext cac = SpringApplication.run(DemoApplication.class, args);
 
-        Endpoint.publish("http://localhost:9091/ws/check?wsdl", new GetDocumentImpl());
+        GetDocumentImpl getDocument = cac.getBean(GetDocumentImpl.class);
+
+        Endpoint.publish(getDocument.myServiceAddress, getDocument);
 
 
 
